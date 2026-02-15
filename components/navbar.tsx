@@ -6,6 +6,7 @@ import { Menu, X, ShoppingBag } from "lucide-react"
 
 const navLinks = [
   { label: "精選茶品", href: "#products" },
+  { label: "選茶指南", href: "#guide" },
   { label: "茶葉歷史", href: "#history" },
   { label: "風土環境", href: "#environment" },
   { label: "聯絡我們", href: "#contact" },

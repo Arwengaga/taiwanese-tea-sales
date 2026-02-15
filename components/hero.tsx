@@ -1,26 +1,18 @@
-"use client"
-
-import { useState } from "react"
 import Image from "next/image"
 
 export function Hero() {
-  const [imgError, setImgError] = useState(false)
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
-      {/* Background image（若無圖片則顯示茶色漸層） */}
-      {!imgError ? (
-        <Image
-          src="/images/hero-tea.jpg"
-          alt="台灣高山茶園雲霧繚繞的壯麗景色"
-          fill
-          className="object-cover"
-          priority
-          quality={90}
-          onError={() => setImgError(true)}
-        />
-      ) : (
-        <div className="absolute inset-0 bg-gradient-to-b from-stone-700 to-stone-900" />
-      )}
+      {/* Background image */}
+      <Image
+        src="/images/hero-tea.jpg"
+        alt="台灣高山茶園雲霧繚繞的壯麗景色"
+        fill
+        sizes="100vw"
+        className="object-cover"
+        priority
+        quality={90}
+      />
 
       {/* Overlay */}
       <div className="absolute inset-0 bg-foreground/50" />
@@ -34,9 +26,9 @@ export function Hero() {
           茶韻山房
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-background/90 md:text-xl">
-          源自台灣高山的頂級茶葉，傳承百年製茶工藝，
+          <span>{"源自台灣高山的頂級茶葉，傳承百年製茶工藝，"}</span>
           <br className="hidden md:block" />
-          將山間雲霧的清幽與大地的醇厚，凝結於每一片茶葉之中。
+          <span>{"將山間雲霧的清幽與大地的醇厚，凝結於每一片茶葉之中。"}</span>
         </p>
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <a

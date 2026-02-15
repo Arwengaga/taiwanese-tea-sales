@@ -1,6 +1,3 @@
-"use client"
-
-import { useState } from "react"
 import Image from "next/image"
 
 const timeline = [
@@ -37,7 +34,6 @@ const timeline = [
 ]
 
 export function History() {
-  const [imgError, setImgError] = useState(false)
   return (
     <section id="history" className="bg-secondary py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6">
@@ -57,20 +53,14 @@ export function History() {
 
         <div className="grid items-center gap-12 lg:grid-cols-2">
           {/* Image */}
-          <div className="relative aspect-[4/5] overflow-hidden rounded-sm bg-muted">
-            {!imgError ? (
-              <Image
-                src="/images/tea-history.jpg"
-                alt="傳統台灣製茶師傅手工揉捻茶葉"
-                fill
-                className="object-cover"
-                onError={() => setImgError(true)}
-              />
-            ) : (
-              <div className="absolute inset-0 flex items-center justify-center text-muted-foreground text-sm">
-                茶葉歷史圖片
-              </div>
-            )}
+          <div className="relative aspect-[4/5] overflow-hidden rounded-sm">
+            <Image
+              src="/images/tea-history.jpg"
+              alt="傳統台灣製茶師傅手工揉捻茶葉"
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover"
+            />
           </div>
 
           {/* Timeline */}

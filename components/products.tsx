@@ -1,6 +1,5 @@
 "use client"
 
-import { useState } from "react"
 import Image from "next/image"
 import { ShoppingBag } from "lucide-react"
 
@@ -53,7 +52,6 @@ const teas = [
 ]
 
 export function Products() {
-  const [failedImages, setFailedImages] = useState<Set<string>>(new Set())
   return (
     <section id="products" className="py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6">
@@ -78,20 +76,14 @@ export function Products() {
               key={tea.name}
               className="group overflow-hidden rounded-sm border border-border bg-card transition-shadow hover:shadow-lg"
             >
-              <div className="relative aspect-[4/3] overflow-hidden bg-muted">
-                {failedImages.has(tea.name) ? (
-                  <div className="absolute inset-0 flex items-center justify-center text-muted-foreground text-sm">
-                    茶品圖片
-                  </div>
-                ) : (
-                  <Image
-                    src={tea.image}
-                    alt={tea.name}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    onError={() => setFailedImages((prev) => new Set(prev).add(tea.name))}
-                  />
-                )}
+              <div className="relative aspect-[4/3] overflow-hidden">
+                <Image
+                  src={tea.image}
+                  alt={tea.name}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
               </div>
               <div className="p-6">
                 <div className="flex items-start justify-between gap-2">

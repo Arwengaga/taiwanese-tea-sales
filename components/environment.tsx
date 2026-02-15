@@ -1,6 +1,3 @@
-"use client"
-
-import { useState } from "react"
 import Image from "next/image"
 import { Mountain, Droplets, Cloud, Thermometer } from "lucide-react"
 
@@ -32,7 +29,6 @@ const factors = [
 ]
 
 export function Environment() {
-  const [imgError, setImgError] = useState(false)
   return (
     <section id="environment" className="py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6">
@@ -51,16 +47,14 @@ export function Environment() {
         </div>
 
         {/* Full-width image */}
-        <div className="relative mb-16 aspect-[21/9] overflow-hidden rounded-sm bg-muted">
-          {!imgError ? (
-            <Image
-              src="/images/tea-environment.jpg"
-              alt="台灣高山茶區雲霧繚繞的壯麗山景與梯田茶園"
-              fill
-              className="object-cover"
-              onError={() => setImgError(true)}
-            />
-          ) : null}
+        <div className="relative mb-16 aspect-[21/9] overflow-hidden rounded-sm">
+          <Image
+            src="/images/tea-environment.jpg"
+            alt="台灣高山茶區雲霧繚繞的壯麗山景與梯田茶園"
+            fill
+            sizes="100vw"
+            className="object-cover"
+          />
           <div className="absolute inset-0 bg-foreground/20" />
           <div className="absolute inset-0 flex items-center justify-center">
             <blockquote className="max-w-2xl px-6 text-center">
